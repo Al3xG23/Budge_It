@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Project } = require('../models');
+const { User, Income, Bills } = require('../models');
 
 const userData = require('./userData.json');
-const projectData = require('./projectData.json');
+const incomeData = require('./incomeData.json');
+const billData = require('./billData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -12,11 +13,18 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
+  for (const amount of incomeData) {
+    await Income.create({
+      ...amount,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
+  }
+
+  for (const bill of billData) {
+    await Bills.create({
+      ...bill,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    })
   }
 
   process.exit(0);
