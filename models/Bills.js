@@ -17,7 +17,7 @@ Bills.init(
         },
         // -------------- Type of Bill -------------------
         billType: {
-            Type: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         //  ----------------- ---------------------------

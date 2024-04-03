@@ -3,18 +3,21 @@
         "billName": "Car",
         "Recurring": true,
         "dueDate": "2024-04-20",
-        "amount": 500.98
+        "amount": 500.98,
+        "billType": "Transportation"
     },
     {
         "billName": "Insurance",
         "Recurring": true,
         "dueDate": "2024-04-15",
-        "amount": 230.74
+        "amount": 230.74,
+        "billType":"Transportation"
     },
     {
         "billName": "Grocery",
         "Recurring": false,
         "dueDate": "2024-04-17",
-        "amount": 425.98
+        "amount": 425.98,
+        "billType": "Groceries"
     }
 ]
