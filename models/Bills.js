@@ -15,6 +15,12 @@ Bills.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // -------------- Type of Bill -------------------
+        billType: {
+            Type: DataTypes.STRING,
+            allowNull: false,
+        },
+        //  ----------------- ---------------------------
         Recurring: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
