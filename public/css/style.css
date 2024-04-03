@@ -2,6 +2,12 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
+* {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .no-button {
   background: none;
   border: none;
