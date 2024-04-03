@@ -1,48 +1,14 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New bill:</h3>
-
-    <form class="form new-bill-form">
-      <div class="form-group">
-        <label for="bill-name">bill name:</label>
-        <input class="form-input" type="text" id="bill-name" name="bill-name" />
-      </div>
-      <div class="form-group">
-        <label for="bill-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="bill-funding" name="bill-funding" />
-      </div>
-      <div class="form-group">
-        <label for="bill-desc">description:</label>
-        <textarea class="form-input" id="bill-desc" name="bill-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
-
-  {{#if bills.length}}
-  <div class="col-md-6 bill-list">
-    <h3>Current bills:</h3>
-
-    {{#each bills as |bill|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/bill/{{bill.id}}">{{bill.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{bill.id}}">DELETE</button>
-      </div>
+ <h2>2024 Family Budget App</h2>
+    <div id="inputs">
+        <select name="month" id="monthDrop"></select>
+        <select name="date" id="dateDrop">
+        </select>
+        <input type="number" id="startingNumber">
+        <select name="days" id="daysDrop"></select>
+        <button id="button">submit</button>
     </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-<script src="./js/budget.js"></script>
+    <div>
+        <h3 id="answer"></h3>
+    </div>
+    <script src="../public/js/budget.js"></script>

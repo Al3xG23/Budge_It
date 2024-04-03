@@ -14,7 +14,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
+
+      // If successful, redirect the browser to the budget page
+
       document.location.replace('/budget');
     } else {
       alert(response.statusText);
