@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Add a New Bill:</h3>
+
+    <form class="form new-bill-form">
+      <div class="form-group">
+        <label for="bill-name">bill name:</label>
+        <input class="form-input" type="text" id="bill-name" name="bill-name" />
+      </div>
+      <div class="form-group">
+        <label for="bill-amount">bill amount ($):</label>
+        <input class="form-input" type="number" id="bill-amount" name="bill-amount" />
+      </div>      
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if bill.length}}
+  <div class="col-md-6 bill-list">
+    <h3>Current Bills:</h3>
+
+    {{#each bills as |bill|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/bills/{{bill.id}}">{{bill.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{bill.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>

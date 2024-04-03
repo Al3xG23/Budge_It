@@ -1,3 +1,4 @@
+
 let spendings = {
     1: 426 + 30 + 33 + 2229,
     2: 50,
@@ -110,3 +111,5 @@ function submitForm() {
 let submitButton = document.getElementById("button");
 
 submitButton.addEventListener("click", submitForm);
+
+
