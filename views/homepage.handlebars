@@ -18,6 +18,31 @@
         <input class="form-input" type="number" id="bill-amount" name="bill-amount" />
       </div>      
       <div class="form-group">
+      <div class = "form-group">
+        <label for="bill-due-date">bill due date: </label>
+        <input class="form-input" type="date" id="bill-due-date" name="bill-due-date"/>
+      </div>
+      <div class = "form-group">
+        <label for="isRecurring">Recurring?: 
+        <input class="form-input" type="radio" id="yes" value="yes" name="isRecurring"/>
+        <label for="yes">Yes</label>
+        <input class="form-input" type="radio" id="no" value = "no" name="isRecurring"/>
+        <label for="no">No</label>
+        </label>
+      </div>
+      <div class= "form-group">
+        <label for="bill-type">select bill type: </label>
+        <select id="bill-type" class="form-input" name="bill-type">
+        <option value="" selected disabled>---Select A Bill Type---</option>
+        <option value="Transportaion">Transportation</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Utility">Utility</option>
+        <option value="Entertainment"> Entertainment</option>
+        <option value="Rent/Mortgage">Rent/Mortgage</option>
+        <option value="Medical">Medical</option>
+        <option value="Savings">Savings</option>
+        </select>
+      </div>
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </form>
