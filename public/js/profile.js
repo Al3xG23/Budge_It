@@ -40,6 +40,15 @@ const newFormHandler = async (event) => {
     }
   };
   
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+
   document
     .querySelector('.new-bill-form')
     .addEventListener('submit', newFormHandler);
