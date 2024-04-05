@@ -1,23 +1,25 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#project-name').value.trim();
-    const needed_funding = document.querySelector('#project-funding').value.trim();
-    const description = document.querySelector('#project-desc').value.trim();
+    const billName = document.querySelector('#bill-name').value.trim();
+    const amount = document.querySelector('#bill-amount').value.trim();
+    const dueDate = document.querySelector('#bill-due-date').value.trim();
+    const Recurring = document.querySelector('#isRecurring').value.trim();
+    const billType = document.querySelector('#bill-type').value.trim();
   
-    if (name && needed_funding && description) {
+    if (billName && amount && dueDate && Recurring && billType) {
       const response = await fetch(`/api/projects`, {
         method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
+        body: JSON.stringify({ billName, amount, Recurring, dueDate, billType }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/');
       } else {
-        alert('Failed to create project');
+        alert('Failed to create bill');
       }
     }
   };
