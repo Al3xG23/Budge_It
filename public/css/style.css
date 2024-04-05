@@ -2,7 +2,8 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
-#budgetPage {
+#budgetPage,
+#introPage {
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -10,10 +11,47 @@ header, .project:not(:last-child) {
   justify-content: center;
 }
 
+#description {
+  max-width: 800px;
+}
+
+#introPage > p,
+#introPage > ol > li {
+  font-size: x-large;
+}
+
+#introPage {
+  margin-top: 180px;
+}
+
+#introPage h2 {
+  text-shadow: 2px 2px 3px rgba(220, 220, 220, 0.5);
+}
+
+#green {
+  text-shadow: 1px 1px 4px rgba(120, 255, 192, 0.5);
+  color: green;
+}
+
+#red {
+  text-shadow: 1px 1px 1px rgba(255, 114, 140, 0.5);
+  color: red;
+}
+
+#howTo {
+  margin-top: 40px;
+  
+}
+
 * {
   font-family: "Orbitron", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+strong {
+  text-shadow: 1px 1px 1px rgba(77, 184, 246, 0.5);
+  color: #1b89bc;
 }
 
 .no-button {
