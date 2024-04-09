@@ -23,7 +23,7 @@ const seedDatabase = async () => {
   for (const bill of billData) {
     await Bills.create({
       ...bill,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
     })
   }
 
