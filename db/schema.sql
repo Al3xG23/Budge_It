@@ -1,3 +1,3 @@
--- Active: 1710292844900@@127.0.0.1@3306@budget_db
+-- Active: 1710461456843@@127.0.0.1@3306@budget_db
 DROP DATABASE IF EXISTS budget_db;
 CREATE DATABASE budget_db;
