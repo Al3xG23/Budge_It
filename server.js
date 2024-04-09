@@ -40,9 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Import the descriptionRoutes module
 const descriptionRoutes = require('./controllers/api/descriptionRoutes');
 
+const budgetRoutes = require('./controllers/api/budgetRoutes');
+
+
 // Use the routes defined in controllers/index.js and descriptionRoutes
 app.use(routes);
 app.use(descriptionRoutes);
+app.use(budgetRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
