@@ -4,20 +4,23 @@
         "Recurring": true,
         "dueDate": "2024-04-20",
         "amount": 500.98,
-        "billType": "Transportation"
+        "billType": "Transportation",
+        "user_id": 1
     },
     {
         "billName": "Insurance",
         "Recurring": true,
         "dueDate": "2024-04-15",
         "amount": 230.74,
-        "billType":"Transportation"
+        "billType":"Transportation",
+        "user_id": 2
     },
     {
         "billName": "Grocery",
         "Recurring": false,
         "dueDate": "2024-04-17",
         "amount": 425.98,
-        "billType": "Groceries"
+        "billType": "Groceries",
+        "user_id": 3
     }
 ]

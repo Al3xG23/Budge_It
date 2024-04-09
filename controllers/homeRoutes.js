@@ -2,24 +2,34 @@ const router = require('express').Router();
 const { Income, User, Bills } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all bills and JOIN with user data
     const billData = await Bills.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
       include: [
         {
           model: User,
           attributes: ['username'],
         },
       ],
-    });
+  });
+  
+  const userData = await User.findByPk(req.session.user_id,{
+    attributes: ['username'],
+  });
 
     // Serialize data so the template can read it
     const bills = billData.map((amount) => amount.get({ plain: true }));
 
+    const user = userData.get({plain:true})
+
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       bills, 
+      username: user.username,
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -97,17 +107,17 @@ router.get('/income/:id', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/budget', withAuth, async (req, res) => {
+router.get('/homepage', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Bills, Income }],
+      include: [{ model: Bills}],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('budget', {
+    res.render('homepage', {
       ...user,
       logged_in: true
     });
