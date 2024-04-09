@@ -22,6 +22,8 @@ header, .project:not(:last-child) {
 
 #introPage {
   margin-top: 180px;
+  margin-bottom: 180px;
+
 }
 
 #introPage h2 {
