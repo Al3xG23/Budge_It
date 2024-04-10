@@ -56,13 +56,15 @@
     {{#each bills as |bill|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/bills/{{bill.id}}">{{bill.billName}}: {{bill.amount}} Due on: {{bill.dueDate}}</a></h4>
+        <h4><a href="/bills/{{bill.id}}">{{bill.billName}}: ${{bill.amount}} Due on: {{bill.dueDate}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{bill.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
+
+    <h3>Total Bills: ${{billsTotal}}</h3>
   </div>
   {{/if}}
 </div>
