@@ -43,18 +43,18 @@ const delButtonHandler = async (event) => {
 
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
-  console.log("helloworld");
+  
 
   fetch(`/api/bills/calendar`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   })
   .then(response => {
-    console.log(response);
+    
     return response.json()
   })
     .then(billData => {
-      console.log('events', billData)
+      
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         events: billData,

@@ -29,15 +29,15 @@ router.get('/', withAuth, async (req, res) => {
 
     const amount = bills.map((bill) => {
       let totalBills = 0;
-      totalBills += parseInt(bill.amount);
-      // console.log("bill: ", totalBills);
+      totalBills += parseFloat(bill.amount);
+      
       return totalBills;
     })
-    console.log("total: ", amount);
+    
   
     const initialValue = 0;
     const billsTotal = amount.reduce((amount, current) => amount + current, initialValue,);
-    console.log("array total: ", billsTotal);
+    
   
 
     // Pass serialized data and session flag into template
@@ -131,9 +131,20 @@ router.get('/budget', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+    
+
+    const billData = await Bills.findAll({
+      where: {
+        user_id: req.session.user_id        
+      },
+    });
+    
+    const data = billData.map((data) => data.get({ plain: true }));
+    console.log("user data: ", data);    
 
     res.render('budget', {
       ...user,
+      data,
       logged_in: true
     });
   } catch (err) {

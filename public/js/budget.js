@@ -1,3 +1,4 @@
+const { Income, User, Bills } = require('../models');
 
 let spendings = {
     1: 426 + 30 + 33,
