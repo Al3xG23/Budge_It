@@ -35,4 +35,34 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/calendar', withAuth, async (req, res) => {
+
+  try {
+    console.log("helloworld")
+    
+    // Get all bills and JOIN with user data
+    const billData = await Bills.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+  })
+  console.log("helloWorld", billData);
+
+    // Serialize data so the template can read it
+    const events = billData.map(bill => ({
+      title: `${bill.billName} - ${bill.amount}`,
+      start: bill.dueDate,
+      allDay: true
+    }));
+    console.log(events)
+    // Pass serialized data and session flag into template
+    res.send(events);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 module.exports = router;
