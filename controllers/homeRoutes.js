@@ -16,6 +16,7 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
   });
+
   
   const userData = await User.findByPk(req.session.user_id,{
     attributes: ['username'],
@@ -26,9 +27,23 @@ router.get('/', withAuth, async (req, res) => {
 
     const user = userData.get({plain:true})
 
+    const amount = bills.map((bill) => {
+      let totalBills = 0;
+      totalBills += parseInt(bill.amount);
+      // console.log("bill: ", totalBills);
+      return totalBills;
+    })
+    console.log("total: ", amount);
+  
+    const initialValue = 0;
+    const billsTotal = amount.reduce((amount, current) => amount + current, initialValue,);
+    console.log("array total: ", billsTotal);
+  
+
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      bills, 
+      bills,
+      billsTotal,
       username: user.username,
       logged_in: req.session.logged_in 
     });
@@ -118,6 +133,25 @@ router.get('/budget', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     res.render('budget', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/description', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Bills}],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('description', {
       ...user,
       logged_in: true
     });
