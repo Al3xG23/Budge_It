@@ -27,9 +27,23 @@ router.get('/', withAuth, async (req, res) => {
 
     const user = userData.get({plain:true})
 
+    const amount = bills.map((bill) => {
+      let totalBills = 0;
+      totalBills += parseInt(bill.amount);
+      // console.log("bill: ", totalBills);
+      return totalBills;
+    })
+    console.log("total: ", amount);
+  
+    const initialValue = 0;
+    const billsTotal = amount.reduce((amount, current) => amount + current, initialValue,);
+    console.log("array total: ", billsTotal);
+  
+
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      bills, 
+      bills,
+      billsTotal,
       username: user.username,
       logged_in: req.session.logged_in 
     });
