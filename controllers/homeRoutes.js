@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Income, User, Bills } = require('../models');
 const withAuth = require('../utils/auth');
 
+let amount = '';
+let day = '';
+
 router.get('/', withAuth, async (req, res) => {
   try {
     // Get all bills and JOIN with user data
@@ -140,21 +143,29 @@ router.get('/budget', withAuth, async (req, res) => {
     });
     
     const data = billData.map((data) => data.get({ plain: true }));
-    console.log("user data: ", data);    
+    // console.log("user data: ", data);    
 
-    // amounts
-    console.log(`${data[0].amount}`);
-    console.log(`${data[1].amount}`);
+    // // amounts
+    // console.log(`${data[0].amount}`);
+    // console.log(`${data[1].amount}`);
 
-    // dates
-    console.log(`${data[0].dueDate[8]}${data[0].dueDate[9]}`);
-    console.log(`${data[1].dueDate[8]}${data[1].dueDate[9]}`);
+    // // dates
+    // console.log(`${data[0].dueDate[8]}${data[0].dueDate[9]}`);
+    // console.log(`${data[1].dueDate[8]}${data[1].dueDate[9]}`);
 
+     amount = parseFloat(data[0].amount);
+     day = parseInt(data[0].dueDate.substring(8, 10));
+
+    // Log the values
+    console.log("Amount:", amount);
+    console.log("Day:", day);
 
     res.render('budget', {
       ...user,
       data,
-      logged_in: true
+      logged_in: true,
+      amount,
+      day
     });
   } catch (err) {
     res.status(500).json(err);
@@ -196,6 +207,6 @@ router.get('/login', (req, res) => {
 
 
 
-
+module.exports = { amount, day };
 
 module.exports = router;
