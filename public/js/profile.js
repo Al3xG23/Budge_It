@@ -3,14 +3,13 @@ const newFormHandler = async (event) => {
 
   const billName = document.querySelector('#bill-name').value.trim();
   const amount = document.querySelector('#bill-amount').value.trim();
-  const dueDate = document.querySelector('#bill-due-date').value.trim();
-  const Recurring = document.querySelector('#isRecurring').value.trim();
+  const dueDate = document.querySelector('#bill-due-date').value.trim();  
   const billType = document.querySelector('#bill-type').value.trim();
 
-  if (billName && amount && dueDate && Recurring && billType) {
+  if (billName && amount && dueDate && billType) {
     const response = await fetch(`/api/bills`, {
       method: 'POST',
-      body: JSON.stringify({ billName, amount, Recurring, dueDate, billType }),
+      body: JSON.stringify({ billName, amount, dueDate, billType }),
       headers: {
         'Content-Type': 'application/json',
       },

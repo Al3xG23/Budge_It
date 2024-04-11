@@ -21,10 +21,6 @@ Bills.init(
             allowNull: false,
         },
         //  ----------------- ---------------------------
-        Recurring: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
         dueDate: {
             type: DataTypes.DATEONLY,
             allowNull: false,
