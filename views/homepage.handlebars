@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="row mt-4">
+<div id="addBill" class="row mt-4">
   <div class="col-md-6">
     <h3>Add a New Bill:</h3>
 
@@ -22,14 +22,14 @@
           <label for="bill-due-date">bill due date: </label>
           <input class="form-input" type="date" id="bill-due-date" name="bill-due-date" />
         </div>
-        <div class="form-group">
+        {{!-- <div class="form-group">
           <label for="isRecurring">Recurring?:
             <input class="form-input" type="radio" id="isRecurring" value="true" name="isRecurring" />
             <label for="yes">Yes</label>
             <input class="form-input" type="radio" id="isRecurring" value="false" name="isRecurring" />
             <label for="no">No</label>
           </label>
-        </div>
+        </div> --}}
         <div class="form-group">
           <label for="bill-type">select bill type: </label>
           <select id="bill-type" class="form-input" name="bill-type">
@@ -48,24 +48,24 @@
     </form>
   </div>
 
-  {{#if bills.length}}
+  {{!-- {{#if bills.length}} --}}
   <div class="col-md-6 bill-list">
-    <h3>Current Bills:</h3>
-
+    <h3 id="current" >Current Bills:</h3>
+    <div id="scrollBar">
     {{#each bills as |bill|}}
-    <div class="row mb-2">
+    <div  class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/bills/{{bill.id}}">{{bill.billName}}: ${{bill.amount}} Due on: {{bill.dueDate}}</a></h4>
+        <h6><span class="blue" >{{bill.billName}}:</span> ${{bill.amount}} </br>Due on: {{bill.dueDate}}</h6>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{bill.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
-
+    </div>
     <h3>Total Bills: ${{billsTotal}}</h3>
   </div>
-  {{/if}}
+  {{!-- {{/if}} --}}
 </div>
 <div id="calendar"></div>
 
