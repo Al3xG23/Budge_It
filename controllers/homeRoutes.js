@@ -141,7 +141,14 @@ router.get('/budget', withAuth, async (req, res) => {
     
     const data = billData.map((data) => data.get({ plain: true }));
     console.log("user data: ", data);    
-    console.log(data[0].amount);
+
+    // amounts
+    console.log(`${data[0].amount}`);
+    console.log(`${data[1].amount}`);
+
+    // dates
+    console.log(`${data[0].dueDate[8]}${data[0].dueDate[9]}`);
+    console.log(`${data[1].dueDate[8]}${data[1].dueDate[9]}`);
 
 
     res.render('budget', {
