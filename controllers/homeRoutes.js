@@ -153,19 +153,19 @@ router.get('/budget', withAuth, async (req, res) => {
     // console.log(`${data[0].dueDate[8]}${data[0].dueDate[9]}`);
     // console.log(`${data[1].dueDate[8]}${data[1].dueDate[9]}`);
 
-     amount = parseFloat(data[0].amount);
-     day = parseInt(data[0].dueDate.substring(8, 10));
+    //  amount = parseFloat(data[0].amount);
+    //  day = parseInt(data[0].dueDate.substring(8, 10));
 
     // Log the values
-    console.log("Amount:", amount);
-    console.log("Day:", day);
+    // console.log("Amount:", amount);
+    // console.log("Day:", day);
 
     res.render('budget', {
       ...user,
       data,
       logged_in: true,
-      amount,
-      day
+      // amount,
+      // day
     });
   } catch (err) {
     res.status(500).json(err);
@@ -207,6 +207,6 @@ router.get('/login', (req, res) => {
 
 
 
-module.exports = { amount, day };
+// module.exports = { amount, day };
 
 module.exports = router;
