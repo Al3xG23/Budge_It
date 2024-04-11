@@ -1,13 +1,3 @@
-
-
-let amount = '';
-
-let day = '';
-
-console.log(amount);
-
-console.log(day);
-
 let spendings = {
     1: 426 + 30 + 33,
     2: 50,
