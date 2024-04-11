@@ -2,6 +2,37 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
+#scrollBar {
+  display: block;
+  width: auto;
+  overflow: auto;
+  height: 330px;
+  padding: 1em;
+  margin: 1em auto;
+  outline: 2px dashed cornflowerblue;
+}
+
+#scrollBar::-webkit-scrollbar {
+    width: auto;
+}
+
+#scrollBar::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#scrollBar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+#addBill,
+#current {
+  margin-bottom: 30px;
+}
+
+.blue {
+  color: #1b89bc;
+}
+
 #budgetPage,
 #introPage {
   height: 400px;
@@ -15,6 +46,20 @@ header, .project:not(:last-child) {
   max-width: 800px;
 }
 
+#calendar {
+  margin-bottom: 180px;
+}
+
+#startingNumber {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+#header {
+  min-width: 570px;
+  margin-bottom: 10px;
+}
+
 #introPage > p,
 #introPage > ol > li {
   font-size: x-large;
@@ -26,8 +71,10 @@ header, .project:not(:last-child) {
 
 }
 
-#introPage h2 {
-  text-shadow: 2px 2px 3px rgba(220, 220, 220, 0.5);
+#introPage h2,
+h2,
+h3 {
+  text-shadow: 2px 2px 3px rgba(69, 71, 71, 0.5);
 }
 
 #green {
