@@ -15,6 +15,26 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.get('/', withAuth, async (req, res) => {
+
+  try {      
+    // Get all bills and JOIN with user data
+    const billData = await Bills.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+  })
+  res.status(200).json(billData);
+  console.log(billData);  
+    
+    // Pass serialized data and session flag into template
+    // res.send(events);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const billsData = await Bills.destroy({

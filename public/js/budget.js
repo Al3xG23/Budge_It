@@ -1,3 +1,20 @@
+
+const api = '/api/bills';
+fetch(api)
+.then(response => {
+    if (!response.ok) {
+        throw new Error('No network response');
+    }
+    return response.json();
+})
+.then(billData => {
+    console.log('billData: ', billData);
+})
+.catch(error => {
+    console.error('Error: ', error);
+});
+
+
 let spendings = {
     1: 426 + 30 + 33,
     2: 50,
