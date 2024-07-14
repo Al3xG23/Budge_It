@@ -18,37 +18,37 @@ router.get('/', withAuth, async (req, res) => {
           attributes: ['username'],
         },
       ],
-  });
+    });
 
-  
-  const userData = await User.findByPk(req.session.user_id,{
-    attributes: ['username'],
-  });
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: ['username'],
+    });
 
     // Serialize data so the template can read it
     const bills = billData.map((amount) => amount.get({ plain: true }));
 
-    const user = userData.get({plain:true})
+    const user = userData.get({ plain: true })
 
     const amount = bills.map((bill) => {
       let totalBills = 0;
       totalBills += parseFloat(bill.amount);
-      
+
       return totalBills;
     })
-    
-  
+
+
     const initialValue = 0;
     const billsTotal = amount.reduce((amount, current) => amount + current, initialValue,);
-    
-  
+
+
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
+    res.render('homepage', {
       bills,
       billsTotal,
       username: user.username,
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -93,9 +93,9 @@ router.get('/', async (req, res) => {
     const income = incomeData.map((amount) => amount.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      income, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      income,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -124,24 +124,26 @@ router.get('/income/:id', async (req, res) => {
   }
 });
 
+
+
 // Use withAuth middleware to prevent access to route
 router.get('/budget', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Bills}],
+      include: [{ model: Bills }],
     });
 
     const user = userData.get({ plain: true });
-    
+
 
     const billData = await Bills.findAll({
       where: {
-        user_id: req.session.user_id        
+        user_id: req.session.user_id
       },
     });
-    
+
     const data = billData.map((data) => data.get({ plain: true }));
     // console.log("user data: ", data);    
 
@@ -177,7 +179,7 @@ router.get('/description', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Bills}],
+      include: [{ model: Bills }],
     });
 
     const user = userData.get({ plain: true });
@@ -210,3 +212,5 @@ router.get('/login', (req, res) => {
 // module.exports = { amount, day };
 
 module.exports = router;
+
+
